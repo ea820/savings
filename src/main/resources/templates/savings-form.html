@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add/Edit Savings</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Add/Edit Savings</h2>
+    <div th:if="${errorMessage}" class="alert alert-danger" th:text="${errorMessage}"></div>
+    <form th:object="${savings}" method="post" th:action="@{${savings.id!=null?'/savings/'+savings.id+'/update':'/savings'}}">
+
+    <div class="form-group">
+            <label for="custno">Customer Number</label>
+            <input type="text" class="form-control" id="custno" th:field="*{custno}" placeholder="Enter Customer Number">
+        </div>
+        <div class="form-group">
+            <label for="custname">Customer Name</label>
+            <input type="text" class="form-control" id="custname" th:field="*{custname}" placeholder="Enter Customer Name">
+        </div>
+        <div class="form-group">
+            <label for="cdep">Initial Deposit</label>
+            <input type="number" step="0.01" class="form-control" id="cdep" th:field="*{cdep}" placeholder="Enter Initial Deposit">
+        </div>
+        <div class="form-group">
+            <label for="nyears">Number of Years</label>
+            <input type="number" class="form-control" id="nyears" th:field="*{nyears}" placeholder="Enter Number of Years">
+        </div>
+        <div class="form-group">
+            <label for="savtype">Savings Type</label>
+            <select class="form-control" id="savtype" th:field="*{savtype}">
+                <option value="Regular">Savings-Regular</option>
+                <option value="Deluxe">Savings-Deluxe</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+</body>
+</html>

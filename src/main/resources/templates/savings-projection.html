@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Projected Investment</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Projected table of customer number <span th:text="${savings.custno}"></span></h2>
+    <h4>Name: <span th:text="${savings.custname}"></span></h4>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Year</th>
+            <th>Starting Amount</th>
+            <th>Interest</th>
+            <th>Ending Balance</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="projection : ${projections}">
+            <td th:text="${projection.year}">1</td>
+            <td th:text="${#numbers.formatDecimal(projection.startingAmount, 2, 2)}">9000.00</td>
+            <td th:text="${#numbers.formatDecimal(projection.interest, 2, 2)}">900.00</td>
+            <td th:text="${#numbers.formatDecimal(projection.endingBalance, 2, 2)}">9900.00</td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/savings" class="btn btn-primary">Submit</a>
+</div>
+</body>
+</html>
