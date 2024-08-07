@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+// GitHub Repository Link: https://github.com/ea820/savings
+
 @Controller
 @RequestMapping("/savings")
 public class SavingsController {
